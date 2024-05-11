@@ -27,7 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Hello World';
 
-class block_helloworld
+
+class block_helloworld extends block_base
 {
 
     /**
