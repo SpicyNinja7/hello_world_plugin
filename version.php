@@ -27,5 +27,5 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'block_helloworld';
 $plugin->release = '0.1.0';
 $plugin->version = 2024051100;
-$plugin->requires = 2022112800;
+$plugin->requires = 2022061400;
 $plugin->maturity = MATURITY_ALPHA;
