@@ -34,8 +34,8 @@ function xmldb_block_helloworld_install() {
 
     // Create the table
     $table = new xmldb_table('hello_world');
-    $table->addFieldInfo('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
-    $table->addFieldInfo('message', XMLDB_TYPE_TEXT, null, null, null, null);
+    $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
+    $table->add_field('message', XMLDB_TYPE_TEXT, null, null, null, null);
 
     if (!$DB->get_manager()->table_exists($table)) {
         $DB->get_manager()->create_table($table);
@@ -46,8 +46,13 @@ function xmldb_block_helloworld_install() {
     $record->message = 'Hello World!';
     $DB->insert_record('hello_world', $record);
 
-    // print out record
-    $record = $DB->get_record('hello_world', array());
-    print $record;
+    // Log the record
+    $log = new stdClass();
+    $log->eventname = 'block_helloworld_record_created';
+    $log->component = 'block_helloworld';
+    $log->action = 'created';
+    $log->target = 'record';
+    $log->objectid = $DB->insert_record('logstore_standard_log', $log);
+
+    return true;
 }
-return true;
