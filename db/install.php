@@ -26,7 +26,28 @@
 /**
  * Custom code to be run on installing the plugin.
  */
-function xmldb_block_helloworld_install() {
 
-    return true;
+defined('MOODLE_INTERNAL') || die();
+
+function xmldb_block_helloworld_install() {
+    global $DB;
+
+    // Create the table
+    $table = new xmldb_table('hello_world');
+    $table->addFieldInfo('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
+    $table->addFieldInfo('message', XMLDB_TYPE_TEXT, null, null, null, null);
+
+    if (!$DB->get_manager()->table_exists($table)) {
+        $DB->get_manager()->create_table($table);
+    }
+
+    // Insert the record
+    $record = new stdClass();
+    $record->message = 'Hello World!';
+    $DB->insert_record('hello_world', $record);
+
+    // print out record
+    $record = $DB->get_record('hello_world', array());
+    print $record;
 }
+return true;
