@@ -21,6 +21,7 @@
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 namespace block_helloworld;
 
 use block_base;
@@ -42,7 +43,7 @@ class block_helloworld extends block_base {
     public function get_content() {
         global $DB;
 
-        if ($this->content!== null) {
+        if ($this->content !== null) {
             return $this->content;
         }
 

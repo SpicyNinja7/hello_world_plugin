@@ -15,30 +15,30 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Code to be executed after the plugin's database scheme has been installed is defined here.
+ * Installation script for the helloworld block.
  *
  * @package     block_helloworld
- * @category    upgrade
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
+
 function xmldb_block_helloworld_install() {
     global $DB;
 
-    // Create the table
+    // Create the database table.
     $table = new xmldb_table('hello_world');
-    $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
-    $table->add_field('message', XMLDB_TYPE_TEXT, null, null, null, null);
+    $table->addFieldInfo('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
+    $table->addFieldInfo('message', XMLDB_TYPE_TEXT, null, null, null, null);
 
     if (!$DB->get_manager()->table_exists($table)) {
         $DB->get_manager()->create_table($table);
     }
 
-    // Insert the record
+    // Insert the "Hello World" message.
     $record = new stdClass();
-    $record->message = 'Hello World!';
+    $record->message = 'Hello World';
     $DB->insert_record('hello_world', $record);
-
-    return true;
 }
 ?>
