@@ -22,13 +22,6 @@
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-/**
- * Custom code to be run on installing the plugin.
- */
-
-defined('MOODLE_INTERNAL') || die();
-
 function xmldb_block_helloworld_install() {
     global $DB;
 
@@ -46,13 +39,6 @@ function xmldb_block_helloworld_install() {
     $record->message = 'Hello World!';
     $DB->insert_record('hello_world', $record);
 
-    // Log the record
-    $log = new stdClass();
-    $log->eventname = 'block_helloworld_record_created';
-    $log->component = 'block_helloworld';
-    $log->action = 'created';
-    $log->target = 'record';
-    $log->objectid = $DB->insert_record('logstore_standard_log', $log);
-
     return true;
 }
+?>

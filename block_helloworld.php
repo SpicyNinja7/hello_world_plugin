@@ -21,69 +21,43 @@
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+namespace block_helloworld;
+
+use block_base;
+
 class block_helloworld extends block_base {
 
     /**
-     * Initializes class member variables.
+     * Initializes the block.
      */
     public function init() {
-        // Needed by Moodle to differentiate between blocks.
         $this->title = get_string('pluginname', 'block_helloworld');
     }
 
     /**
-     * Returns the block contents.
+     * Returns the content of the block.
      *
-     * @return stdClass The block contents.
+     * @return stdClass
      */
     public function get_content() {
+        global $DB;
 
-        if ($this->content !== null) {
-            return $this->content;
-        }
-
-        if (empty($this->instance)) {
-            $this->content = '';
+        if ($this->content!== null) {
             return $this->content;
         }
 
         $this->content = new stdClass();
-        $this->content->items = array();
-        $this->content->icons = array();
-        $this->content->footer = '';
 
-        if (!empty($this->config->text)) {
-            $this->content->text = $this->config->text;
+        // Get the record from the database.
+        $record = $DB->get_record('hello_world', array(), '*', IGNORE_MULTIPLE);
+
+        if ($record) {
+            $this->content->text = $record->message;
         } else {
-            $text = 'Please define the content text in /blocks/helloworld/block_helloworld.php.';
-            $this->content->text = $text;
+            $this->content->text = 'Record not found!';
         }
 
         return $this->content;
     }
-
-    /**
-     * Defines configuration data.
-     *
-     * The function is called immediately after init().
-     */
-    public function specialization() {
-
-        // Load user defined title and make sure it's never empty.
-        if (empty($this->config->title)) {
-            $this->title = get_string('pluginname', 'block_helloworld');
-        } else {
-            $this->title = $this->config->title;
-        }
-    }
-
-    /**
-     * Sets the applicable formats for the block.
-     *
-     * @return string[] Array of pages and permissions.
-     */
-    public function applicable_formats() {
-        return array(
-        );
-    }
 }
+?>

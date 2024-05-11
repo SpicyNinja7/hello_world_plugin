@@ -23,43 +23,5 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 $string['pluginname'] = 'Hello World';
-
-
-class block_helloworld extends block_base
-{
-
-    /**
-     * Initializes the block.
-     */
-    public function init()
-    {
-        $this->title = get_string('pluginname', 'block_helloworld');
-    }
-
-    /**
-     * Returns the content of the block.
-     *
-     * @return stdClass
-     */
-    public function get_content()
-    {
-        global $DB;
-
-        if ($this->content !== null) {
-            return $this->content;
-        }
-
-        $this->content = new stdClass();
-
-        // Get the record from the database.
-        $record = $DB->get_record('hello_world', array());
-
-        // Set the content of the block.
-        $this->content->text = $record->message;
-
-        return $this->content;
-    }
-}
+?>
