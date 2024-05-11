@@ -27,9 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Hello World';
 
-require_once($CFG->libdir . '/blocklib.php');
-
-class block_helloworld extends block_base
+class block_helloworld
 {
 
     /**
