@@ -15,16 +15,16 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Installation script for the helloworld block.
+ * Installation script for the hello_world block.
  *
- * @package     block_helloworld
+ * @package     block_hello_world
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-function xmldb_block_helloworld_install() {
+function xmldb_block_hello_world_install() {
     global $DB;
 
     // Create the database table.

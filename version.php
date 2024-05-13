@@ -17,14 +17,14 @@
 /**
  * Plugin version and other meta-data are defined here.
  *
- * @package     block_helloworld
+ * @package     block_hello_world
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'block_helloworld';
+$plugin->component = 'block_hello_world';
 $plugin->release = '0.1.0';
 $plugin->version = 2024051100;
 $plugin->requires = 2022061400;

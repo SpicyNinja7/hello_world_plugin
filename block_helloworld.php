@@ -15,24 +15,24 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Block helloworld is defined here.
+ * Block hello_world is defined here.
  *
- * @package     block_helloworld
+ * @package     block_hello_world
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace block_helloworld;
+namespace block_hello_world;
 
 use block_base;
 
-class block_helloworld extends block_base {
+class block_hello_world extends block_base {
 
     /**
      * Initializes the block.
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_helloworld');
+        $this->title = get_string('pluginname', 'block_hello_world');
     }
 
     /**
