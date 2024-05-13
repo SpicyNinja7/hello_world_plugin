@@ -29,8 +29,8 @@ function xmldb_block_hello_world_install() {
 
     // Create the database table.
     $table = new xmldb_table('hello_world');
-    $table->addFieldInfo('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
-    $table->addFieldInfo('message', XMLDB_TYPE_TEXT, null, null, null, null);
+    $table->addField('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
+    $table->addField('message', XMLDB_TYPE_TEXT, null, null, null, null);
 
     if (!$DB->get_manager()->table_exists($table)) {
         $DB->get_manager()->create_table($table);
