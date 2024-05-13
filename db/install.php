@@ -41,6 +41,7 @@ function xmldb_block_hello_world_install() {
     $record->message = 'Hello World';
     $DB->insert_record('hello_world', $record);
 
+    echo "DONE!";
     return true;
 }
 ?>
