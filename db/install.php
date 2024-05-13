@@ -41,7 +41,12 @@ function xmldb_block_hello_world_install() {
     $record->message = 'Hello World';
     $DB->insert_record('hello_world', $record);
 
-    echo "DONE!";
+    // Retrieve the message from the database.
+    $message = $DB->get_field('hello_world', 'message');
+
+    // Print out the message.
+    echo $message;
+
     return true;
 }
 ?>
