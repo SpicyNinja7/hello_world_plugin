@@ -22,24 +22,13 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace block_hello_world;
-
-use block_base;
+defined('MOODLE_INTERNAL') || die();
 
 class block_hello_world extends block_base {
-
-    /**
-     * Initializes the block.
-     */
     public function init() {
         $this->title = get_string('pluginname', 'block_hello_world');
     }
 
-    /**
-     * Returns the content of the block.
-     *
-     * @return stdClass
-     */
     public function get_content() {
         global $DB;
 
@@ -47,18 +36,13 @@ class block_hello_world extends block_base {
             return $this->content;
         }
 
-        $this->content = new stdClass();
+        $message = $DB->get_field('block_hello_world', 'message');
 
-        // Get the record from the database.
-        $record = $DB->get_record('hello_world', array(), '*', IGNORE_MULTIPLE);
-
-        if ($record) {
-            $this->content->text = $record->message;
-        } else {
-            $this->content->text = 'Record not found!';
+        if ($message) {
+            $this->content = new stdClass();
+            $this->content->text = $message;
         }
 
         return $this->content;
     }
 }
-?>

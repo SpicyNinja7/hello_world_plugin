@@ -21,10 +21,7 @@
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 defined('MOODLE_INTERNAL') || die();
-
-global $plugin;
 
 $plugin->component = 'block_hello_world';
 $plugin->release = '0.1.0';
