@@ -15,21 +15,18 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin administration pages are defined here.
+ * Code that is executed before the tables and data are dropped during the plugin uninstallation.
  *
- * @package     mod_myplugin
- * @category    admin
+ * @package     block_helloworld
+ * @category    upgrade
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+/**
+ * Custom uninstallation procedure.
+ */
+function xmldb_block_helloworld_uninstall() {
 
-if ($hassiteconfig) {
-    $settings = new admin_settingpage('mod_myplugin_settings', new lang_string('pluginname', 'mod_myplugin'));
-
-    // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedIf
-    if ($ADMIN->fulltree) {
-        // TODO: Define actual plugin settings page and add it to the tree - {@link https://docs.moodle.org/dev/Admin_settings}.
-    }
+    return true;
 }

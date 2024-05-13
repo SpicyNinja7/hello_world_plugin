@@ -15,23 +15,13 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * Plugin strings are defined here.
  *
  * @package     block_helloworld
+ * @category    string
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-defined('MOODLE_INTERNAL') || die();
 
-$plugin = new stdClass();
-$plugin->component = 'block_helloworld';
-$plugin->version = 2024051300;
-$plugin->requires = 2023020600;
-$plugin->release = '0.1.0';
-$plugin->maturity = MATURITY_ALPHA;
-
-const MATURITY_ALPHA = 'alpha';
-const MATURITY_BETA = 'beta';
-const MATURITY_RC = 'rc';
-const MATURITY_STABLE = 'stable';
+$string['pluginname'] = 'Hello World';
 ?>

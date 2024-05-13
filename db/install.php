@@ -15,23 +15,30 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Plugin version and other meta-data are defined here.
+ * Installation script for the helloworld block.
  *
  * @package     block_helloworld
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin = new stdClass();
-$plugin->component = 'block_helloworld';
-$plugin->version = 2024051300;
-$plugin->requires = 2023020600;
-$plugin->release = '0.1.0';
-$plugin->maturity = MATURITY_ALPHA;
+function xmldb_block_helloworld_install() {
+    global $DB;
 
-const MATURITY_ALPHA = 'alpha';
-const MATURITY_BETA = 'beta';
-const MATURITY_RC = 'rc';
-const MATURITY_STABLE = 'stable';
+    // Create the database table.
+    //$table = new xmldb_table('hello_world');
+    //$table->addFieldInfo('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
+    //$table->addFieldInfo('message', XMLDB_TYPE_TEXT, null, null, null, null);
+
+    //if (!$DB->get_manager()->table_exists($table)) {
+    //    $DB->get_manager()->create_table($table);
+    //}
+
+    // Insert the "Hello World" message.
+    //$record = new stdClass();
+    //$record->message = 'Hello World';
+    //$DB->insert_record('hello_world', $record);
+}
 ?>
