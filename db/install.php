@@ -24,6 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->libdir . '/xmldb/xmlize.php');
+
 function xmldb_block_hello_world_install() {
     global $DB;
 
