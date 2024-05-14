@@ -20,6 +20,7 @@
  * @package     block_hello_world
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @var stdClass $plugin
  */
 defined('MOODLE_INTERNAL') || die();
 
