@@ -20,12 +20,15 @@
  * @package     block_hello_world
  * @copyright   2024 Is Faid Aznam <isfaid.aznam@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @var stdClass $plugin
  */
-defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'block_hello_world';
-$plugin->release = '0.1.0';
-$plugin->version = 2024051500;
-$plugin->requires = 2022061400;
-$plugin->main_class = 'block_hello_world_block';
+function hello_world_before_footer()
+{
+    global $DB;
+
+    // Retrieve the message from the database.
+    $message = $DB->get_field('hello_world', 'message');
+
+    // Print out the message from the database.
+    \core\notification::add($message, \core\output\notification::NOTIFY_SUCCESS);
+}

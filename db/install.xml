@@ -8,7 +8,7 @@
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"
                        COMMENT="Primary key"/>
-                <FIELD NAME="message" TYPE="char" LENGTH="255" NOTNULL="true"
+                <FIELD NAME="message" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"
                        COMMENT="Hello World message"/>
             </FIELDS>
             <KEYS>
