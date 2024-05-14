@@ -26,11 +26,17 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/xmldb/xmlize.php');
 
+$plugin->component = 'block_hello_world';
+$plugin->release = '0.1.0';
+$plugin->version = 2024051100;
+$plugin->requires = 2022061400;
+$plugin->maturity = MATURITY_ALPHA;
+
 function xmldb_block_hello_world_install() {
     global $DB;
 
     // Create the database table.
-    $xmldb_table = new xmldb_table('hello_world', null, null, true, false, 'id', 'id', XMLDB_TABLE_OPTION_NONE);
+    $xmldb_table = new xmldb_table('hello_world', null, null, true, false, 'id', 'id');
     $xmldb_table->addField('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
     $xmldb_table->addField('message', XMLDB_TYPE_TEXT, null, null, null, null);
 
