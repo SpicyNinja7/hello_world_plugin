@@ -28,12 +28,12 @@ function xmldb_block_hello_world_install() {
     global $DB;
 
     // Create the database table.
-    $table = new xmldb_table('hello_world');
-    $table->addField('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, 'id', 1);
-    $table->addField('message', XMLDB_TYPE_TEXT, null, null, null, null, null, null, 'message', XMLDB_NOTNULL);
+    $xmldb_table = new xmldb_table('hello_world', null, null, true, false, 'id', 'id', XMLDB_TABLE_OPTION_NONE);
+    $xmldb_table->addField('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
+    $xmldb_table->addField('message', XMLDB_TYPE_TEXT, null, null, null, null);
 
-    if (!$DB->get_manager()->table_exists($table)) {
-        $DB->get_manager()->create_table($table);
+    if (!$DB->get_manager()->table_exists($xmldb_table)) {
+        $DB->get_manager()->create_table($xmldb_table);
     }
 
     // Insert the "Hello World" message.
