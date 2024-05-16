@@ -40,11 +40,11 @@ class block_hello_world extends block_base {
 
         if ($message) {
             $this->content = new stdClass();
-            $this->content->text = $message;
+            $this->content->text = html_writer::tag('p', get_string('hello_world_message', 'block_hello_world') . ': ' . $message);
+        } else {
+            $this->content = new stdClass();
+            $this->content->text = html_writer::tag('p', 'error getting message from hello_word DB');
         }
-
-        echo "Data from hello_world db: ";
-        echo $this->content->text;
 
         return $this->content;
     }
