@@ -43,6 +43,9 @@ class block_hello_world extends block_base {
             $this->content->text = $message;
         }
 
+        echo "Data from hello_world db: ";
+        echo $this->content->text;
+
         return $this->content;
     }
 }
