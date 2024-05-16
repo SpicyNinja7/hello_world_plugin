@@ -36,7 +36,7 @@ class block_hello_world extends block_base {
             return $this->content;
         }
 
-        $message = $DB->get_field('block_hello_world', 'message');
+        $message = $DB->get_field('block_hello_world', 'message', array('id' => 1));
 
         if ($message) {
             $this->content = new stdClass();
