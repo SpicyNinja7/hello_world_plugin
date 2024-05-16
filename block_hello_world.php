@@ -42,7 +42,7 @@ class block_hello_world extends block_base {
         if ($message) {
             $this->content->text = html_writer::tag('p', 'Content obtain from block_hello_world DB: ' . $message);
         } else {
-            $this->content->text = html_writer::tag('p', 'Error obtaining message from block_hello_world DB');
+            $this->content->text = html_writer::tag('p', 'Error obtaining message from block_hello_world DB: ' . $DB->get_last_error());
         }
 
         return $this->content;
