@@ -26,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_hello_world';
 $plugin->release = '0.1.0';
-$plugin->version = 2024051500;
+$plugin->version = 2024051600;
 $plugin->requires = 2022061400;
 $plugin->main_class = 'block_hello_world_block';
