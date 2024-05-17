@@ -24,27 +24,43 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->dirroot . '/blocks/base.php');
+
 class block_hello_world extends block_base {
+
     public function init() {
         $this->title = get_string('pluginname', 'block_hello_world');
+    }
+
+    public function specialization() {
+        // Nothing to do here.
     }
 
     public function get_content() {
         global $DB;
 
-        if ($this->content !== null) {
+        if ($this->content !== NULL) {
             return $this->content;
         }
 
-        $message = $DB->get_field('block_hello_world', 'message', array('id' => 0));
-
         $this->content = new stdClass();
-        if ($message) {
-            $this->content->text = html_writer::tag('p', 'Content obtain from block_hello_world DB: ' . $message);
-        } else {
-            $this->content->text = html_writer::tag('p', 'Error obtaining message from block_hello_world DB: ' . $DB->get_last_error());
-        }
+        $this->content->text = '';
+        $this->content->footer = '';
+
+        // Check if the database record exists.
+        //$record = $DB->get_record('hello_world', array());
+
+        //if (!$record) {
+            // Create a new database record.
+            //$record = new stdClass();
+            //$record->message = 'Hello World!';
+            //$DB->insert_record('hello_world', $record);
+        //}
+
+        // Display the message.
+        $this->content->text = $record->message;
 
         return $this->content;
     }
+
 }
