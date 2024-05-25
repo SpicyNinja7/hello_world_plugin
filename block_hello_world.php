@@ -37,28 +37,19 @@ class block_hello_world extends block_base {
     }
 
     public function get_content() {
-        global $DB;
+        global $CFG, $DB;
 
         if ($this->content !== NULL) {
             return $this->content;
         }
+        $this->content = new stdClass;
 
-        $this->content = new stdClass();
-        $this->content->text = '';
-        $this->content->footer = '';
+        // Retrieve the data from the database table.
+        $record = $DB->get_record('block_hello_world', null, null, MUST_EXIST);
 
-        // Check if the database record exists.
-        //$record = $DB->get_record('hello_world', array());
-
-        //if (!$record) {
-            // Create a new database record.
-            //$record = new stdClass();
-            //$record->message = 'Hello World!';
-            //$DB->insert_record('hello_world', $record);
-        //}
-
-        // Display the message.
-        $this->content->text = $record->message;
+        // Display the data in the block.
+        $this->content->text = $record->text;
+        $this->content->footer = 'This is a custom Moodle block.';
 
         return $this->content;
     }
