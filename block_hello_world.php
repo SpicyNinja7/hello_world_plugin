@@ -24,6 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->dirroot . '/blocks/base.php');
+
 class block_hello_world extends block_base {
 
     public function init() {
@@ -40,7 +42,6 @@ class block_hello_world extends block_base {
         if ($this->content !== NULL) {
             return $this->content;
         }
-
         $this->content = new stdClass;
 
         // Retrieve the data from the database table.
