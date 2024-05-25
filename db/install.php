@@ -22,25 +22,19 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 function xmldb_block_hello_world_install() {
     global $DB;
 
-    // Create the database table.
-    $xmldb_table = new xmldb_table('hello_world', null, null, true, false, 'id', 'id');
-    $xmldb_table->addField('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
-    $xmldb_table->addField('message', 2, null, null, null, null);
+    // Disable hello_world on new installs by default.
+    $DB->set_field('block', 'visible', 0, ['name' => 'hello_world']);
 
-    if (!$DB->get_manager()->table_exists($xmldb_table)) {
-        $DB->get_manager()->create_table($xmldb_table);
+    // Check if the database record exists.
+    $record = $DB->get_record('hello_world', array());
+
+    if (!$record) {
+        // Create a new database record.
+        $record = new stdClass();
+        $record->message = 'Hello World!';
+        $DB->insert_record('hello_world', $record);
     }
-
-    // Insert the "Hello World" message.
-    $record = new stdClass();
-    $record->message = 'Hello World';
-    $DB->insert_record('hello_world', $record);
-
-    return true;
 }
-?>
